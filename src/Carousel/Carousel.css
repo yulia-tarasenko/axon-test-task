@@ -1,0 +1,21 @@
+.Carousel {
+    padding: 20px;
+    margin: auto;
+    max-width: 1200px;
+}
+
+.CarouselContainer {
+    border: 1px solid grey;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.CarouselTrack {
+    display: flex;
+    transition: 1s;
+}
+
+.ButtonContainer {
+    text-align: center;
+    margin-top: 20px;
+}

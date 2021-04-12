@@ -1,0 +1,16 @@
+.CarouselItem {
+    display: flex;
+    padding: 20px;
+    flex-shrink: 0;
+}
+
+.CarouselImage {
+    max-width: 50%;
+    object-fit: cover;
+}
+
+.CarouselInfo {
+    align-self: center;
+    padding: 10px;
+    padding-right: 0;
+}
