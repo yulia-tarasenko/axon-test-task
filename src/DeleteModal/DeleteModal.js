@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 
 const deleteModal = (props) => {
     const submitDelete = () => {
+        props.clicked(props.id);
         deletePost(props.id);
         props.handleClose();
     };

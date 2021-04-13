@@ -11,6 +11,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 function App() {
   const [isLoading, setLoading] = useState(false);
   const [posts, setPosts] = useState(null);
+  const [newId, setNewId] = useState(101);
 
   useEffect(() => {
     setLoading(true);
@@ -60,6 +61,29 @@ function App() {
     handleDeleteOpen();
   };
 
+  const createPostHandler = (title, body) => {
+    let newPosts = posts.map(post => ({...post}));
+    newPosts.push({id: newId, title, body});
+    console.log(newPosts);
+    setPosts(newPosts);
+    setNewId(newId+1);
+  };
+
+  const editPostHandler = (title, body, id) => {
+    let newPosts = posts.map(post => ({...post}));
+    let editIndex = newPosts.findIndex(elem => elem.id === id);
+    newPosts[editIndex] = {id, title, body};
+    console.log(newPosts);
+    setPosts(newPosts);
+  };
+
+  const deletePostHandler = (id) => {
+    let newPosts = posts.map(post => ({...post}));
+    let deleteIndex = newPosts.findIndex(elem => elem.id === id);
+    newPosts.splice(deleteIndex, 1);
+    setPosts(newPosts);
+  };
+
   
   if (isLoading) {
     return <CircularProgress/>
@@ -76,9 +100,10 @@ function App() {
         </Button>
         <PostForm open={open} handleClose={handleClose}
         isNewPost={isNewPost} id={currentId}
-        titleValue={titleForm} bodyValue={bodyForm}/>
+        titleValue={titleForm} bodyValue={bodyForm}
+        clickedCreate={createPostHandler} clickedEdit={editPostHandler}/>
         <DeleteModal open={openDelete} handleClose={handleDeleteClose}
-        id={currentId}/>
+        id={currentId} clicked={deletePostHandler}/>
         <Posts posts={posts} 
         clickedEdit={clickedEditHandler} clickedDelete={clickedDeleteHandler}/>
       </Container>

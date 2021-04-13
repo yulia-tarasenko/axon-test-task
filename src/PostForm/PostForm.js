@@ -13,11 +13,13 @@ const postForm = (props) => {
 
     const formSubmitPost = (data) => {
         const submitMethod = props.isNewPost ? addPost : changePost;
+        const actionMethod = props.isNewPost ? props.clickedCreate : props.clickedEdit;
         submitMethod({
             title: data.title,
             body: data.body, 
             userId: 1
         }, props.id);
+        actionMethod(data.title, data.body, props.id);
         props.handleClose();
         reset();
     };
