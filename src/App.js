@@ -64,7 +64,6 @@ function App() {
   const createPostHandler = (title, body) => {
     let newPosts = posts.map(post => ({...post}));
     newPosts.push({id: newId, title, body});
-    console.log(newPosts);
     setPosts(newPosts);
     setNewId(newId+1);
   };
@@ -73,7 +72,6 @@ function App() {
     let newPosts = posts.map(post => ({...post}));
     let editIndex = newPosts.findIndex(elem => elem.id === id);
     newPosts[editIndex] = {id, title, body};
-    console.log(newPosts);
     setPosts(newPosts);
   };
 
